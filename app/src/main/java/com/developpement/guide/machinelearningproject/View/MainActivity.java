@@ -1,4 +1,4 @@
-package com.developpement.guide.machinelearningproject;
+package com.developpement.guide.machinelearningproject.View;
 
 
 
@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.developpement.guide.machinelearningproject.R;
 import com.developpement.guide.machinelearningproject.View.PaintView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,27 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.init(metrics);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.normal:
+                paintView.normal();
+                return true;
+            case R.id.clear:
+                paintView.clear();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }
